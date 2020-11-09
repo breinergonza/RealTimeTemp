@@ -17,10 +17,13 @@ router.get('/grafica', ( req: Request, res: Response  ) => {
 
 router.post('/grafica', ( req: Request, res: Response  ) => {
 
-    const mes      = req.body.mes;
-    const unidades = Number( req.body.unidades );
+    const minuto      = req.body.minuto;
+    const valor = Number( req.body.temperatura );
 
-    grafica.incrementarValor( mes, unidades );
+    console.log('Min : ' + minuto);
+    console.log('Val : ' + valor);
+
+    grafica.incrementarValor( minuto, valor );
 
     const server = Server.instance;
     server.io.emit('cambio-grafica', grafica.getDataGrafica() );

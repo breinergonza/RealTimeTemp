@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { WebsocketService } from '../../services/websocket.service';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-grafica',
@@ -10,11 +11,11 @@ import { WebsocketService } from '../../services/websocket.service';
 export class GraficaComponent implements OnInit {
 
   public lineChartData: Array<any> = [
-    { data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0], label: 'Proceso aprovisionamiento'}
+    { data: [0, 0, 0, 0, 0, 0], label: 'Temperatura: Raspberry Pi'}
   ];
 
   // public lineChartLabels: Array<any> = ['Enero', 'Febrero', 'Marzo', 'Abril' ];
-  public lineChartLabels: Array<any> = ['pending', 'cloud', 'vpg', 'ipset', 'edge', 'init_edge',  'find_vm_stock', 'conf_vm', 'deliver', 'ended'];
+  public lineChartLabels: Array<any> = ['min_5', 'min_15', 'min_25', 'min_35', 'min_45', 'min_55'];
   public listTable:[];
   public claseCss:"none";
 
@@ -32,7 +33,7 @@ export class GraficaComponent implements OnInit {
   }
 
   getData() {
-    this.http.get('http://localhost:5000/grafica')
+    this.http.get(`${environment.url}/grafica`)
       .subscribe( (data: any) =>{this.lineChartData = data;
         data.forEach(element => {
           this.listTable = element.data;

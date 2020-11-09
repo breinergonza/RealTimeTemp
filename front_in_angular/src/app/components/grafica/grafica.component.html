@@ -1,4 +1,4 @@
-<h1>Proceso de aprovisionamiento de una VM</h1>
+<h1>Temperatura: Raspberry Pi</h1>
 <hr />
 
 <div class="row">
@@ -23,13 +23,13 @@
     <table class="table table-sm table-dark">
       <thead>
         <tr>
-          <th scope="col">Pasos</th>
-          <th scope="col">Estado</th>
+          <th scope="col">Rango</th>
+          <th scope="col">Temperatura</th>
         </tr>
       </thead>
       <tbody>
         <tr id="{{indice}}" *ngFor="let valor of listTable; let indice=index" [ngClass]="(valor <= 1)?'bg-warning':((valor === 2)?'bg-secondary':'bg-success')">
-          <th scope="row">{{indice+1}}</th>
+          <th scope="row">{{indice}}</th>
           <td >{{valor}}</td>         
         </tr>
       </tbody> 
@@ -37,5 +37,5 @@
   </div>
 </div>
 
-
-<input value="{{listTable}}" />
+<!-- 
+<input value="{{listTable}}" /> -->

@@ -2,27 +2,25 @@
 
 export class GraficaData {
 
-    private meses: string[] = ['enero', 'febrero', 'marzo', 'abril' ];
-    private valores: number[] = [0, 0, 0, 0];
+    private minutos: string[] = ['min_5', 'min_15', 'min_25', 'min_35', 'min_45', 'min_55' ];
+    private temperaturas: number[] = [0, 0, 0, 0, 0, 0];
 
     constructor() { }
 
     getDataGrafica() {
         return [
-            { data: this.valores , label: 'Ventas'}
+            { data: this.temperaturas , label: 'Temperatura'}
         ];
     }
 
-    incrementarValor( mes: string, valor: number ) {
+    incrementarValor( minuto: string, temperatura: number ) {
 
-        mes = mes.toLowerCase().trim();
+        minuto = minuto.toLowerCase().trim();
 
-        for( let i in this.meses ) {
-
-            if ( this.meses[i] === mes ) {
-                this.valores[i] += valor;
+        for( let i in this.minutos ) {
+            if ( this.minutos[i] === minuto ) {
+                this.temperaturas[i] = temperatura;
             }
-
         }
 
         return this.getDataGrafica();
